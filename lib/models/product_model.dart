@@ -8,7 +8,7 @@ class Product {
   final String id;
   final String imageUrl;
   final String name;
-  final double price;
+  final num price;
 
   Product({
     required this.id,

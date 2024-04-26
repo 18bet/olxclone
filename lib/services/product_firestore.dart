@@ -6,7 +6,7 @@ class ProductService extends BaseFireStoreService {
   Future<List<Product>> getInitialProduct() async {
     try {
       final querySnapshot =
-          await fireStoreInstance.collection('products').get();
+          await fireStoreInstance.collection('product').get();
       if (querySnapshot.docs.isEmpty) return [];
 
       final product = querySnapshot.docs

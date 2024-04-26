@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:olxclone/ui/screens/home_screen/home_controller.dart';
+import 'package:olxclone/ui/widgets/bottom_nevigation_bar.dart';
 import 'package:olxclone/ui/widgets/product_card.dart';
 import 'package:olxclone/ui/widgets/search_bar_widget.dart';
 
@@ -53,26 +55,31 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
             ),
-            Expanded(
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  childAspectRatio: 0.7,
-                ),
-                itemCount: controller.productList.length,
-
-                itemBuilder: (context, index) {
-               final data = controller.productList[index];
-                  return ProductCard(
-                   product: data,
-                  );
-                },
-              ),
+            Obx(
+              () => controller.isLoading.value == true
+                  ? const Text("Loading")
+                  : Expanded(
+                      child: GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                          childAspectRatio: 0.7,
+                        ),
+                        itemCount: controller.productList.length,
+                        itemBuilder: (context, index) {
+                          final data = controller.productList[index];
+                          return ProductCard(
+                            product: data,
+                          );
+                        },
+                      ),
+                    ),
             ),
           ],
         ),
+        bottomNavigationBar: BottomNavBar(),
       );
     });
   }
