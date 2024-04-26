@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 import 'package:olxclone/models/product_model.dart';
 import 'package:olxclone/services/base_service.dart';
 
@@ -19,9 +20,11 @@ class ProductService extends BaseFireStoreService {
       return product;
     } on FirebaseException catch (e) {
       handleFirebaseException(e);
+      e.printError();
       return [];
     } catch (e) {
       handleFirebaseException(e);
+      e.printError();
       return [];
     }
   }
