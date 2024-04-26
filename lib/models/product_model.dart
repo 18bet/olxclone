@@ -17,7 +17,7 @@ class Product {
     required this.price,
   });
 
-  factory Product.fromJson(Map<String, dynamic> json) {
+  factory Product.fromJson(Map<String, dynamic> json, String docId) {
     return _$ProductFromJson(json);
   }
 

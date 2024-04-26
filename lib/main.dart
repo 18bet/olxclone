@@ -1,9 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:olxclone/firebase_options.dart';
 import 'package:olxclone/routes/app_pages.dart';
 import 'package:olxclone/routes/routes.dart';
+import 'package:olxclone/services/dependency_injector.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  Dependency.init();
   runApp(const MyApp());
 }
 

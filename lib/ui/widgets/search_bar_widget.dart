@@ -42,7 +42,7 @@ class _SearchWidgetState extends State<SearchWidget> {
         });
       },
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.5,
+       // height: MediaQuery.of(context).size.height * 0.5,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
